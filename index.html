@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <title>Entradas Euphoric 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="layout">
+    <section class="card hero">
+      <p class="eyebrow">Evento unico</p>
+      <h1>Euphoric 2026</h1>
+      <p class="subtitle">Evento fiesta privado en un lugar muy especial. Solicitud de compra para el <strong>5 de septiembre de 2026</strong>.</p>
+      <p class="section-text highlighted-note">El precio de la entrada no incluye ninguna consumicion.</p>
+      <div class="meta-grid">
+        <article>
+          <span class="meta-label">Precio</span>
+          <strong>10 EUR</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Solicitar compra</h2>
+      <p class="section-text">Completas el formulario, guardamos la solicitud y te mostramos donde hacer el Bizum. Tras validar el pago, el equipo Euphoric te contacta manualmente para la entrega del QR.</p>
+
+      <form id="orderForm" class="order-form">
+        <label for="fullName">Nombre completo</label>
+        <input id="fullName" name="fullName" type="text" required>
+
+        <label for="phone">WhatsApp / telefono</label>
+        <input id="phone" name="phone" type="text" required>
+
+        <label for="quantity">Cantidad de entradas</label>
+        <select id="quantity" name="quantity" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+
+        <div id="extraAttendees" class="extra-attendees" aria-live="polite"></div>
+
+        <button type="submit" id="submitBtn">Solicitar compra y ver datos de Bizum</button>
+      </form>
+    </section>
+
+    <section class="card status" id="statusCard">
+      <h2>Estado</h2>
+      <p id="statusMessage">Completa tus datos para generar el pedido.</p>
+    </section>
+  </main>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
