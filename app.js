@@ -127,7 +127,7 @@ form.addEventListener("submit", async (event) => {
       totalAmount: data.totalAmount
     };
 
-    const successHtml = `<span class="status-badge">SOLICITUD GUARDADA</span><br><strong>Bizum:</strong> ${order.totalAmount} EUR a <strong>${BIZUM_TARGET}</strong><br><strong>Referencia obligatoria:</strong> nombre y apellidos del pagador<br><strong>Entrega:</strong> QR por WhatsApp enviado manualmente por el equipo Euphoric tras validar el pago.`;
+    const successHtml = `<span class="status-badge">SOLICITUD GUARDADA</span><br><strong>Bizum:</strong> ${order.totalAmount} EUR a <strong>${BIZUM_TARGET}</strong><br><strong>Referencia obligatoria:</strong> nombre y apellidos del pagador<br><strong>Entrega:</strong> Por WhatsApp enviaremos la entrada con la hora y la ubicacion para el evento Euphoric tras validar el pago.`;
 
     setStatus(
       "ok",
