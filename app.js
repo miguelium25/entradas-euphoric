@@ -8,6 +8,9 @@ const statusCard = document.getElementById("statusCard");
 const statusMessage = document.getElementById("statusMessage");
 const quantitySelect = document.getElementById("quantity");
 const extraAttendeesEl = document.getElementById("extraAttendees");
+const statusModal = document.getElementById("statusModal");
+const modalMessage = document.getElementById("modalMessage");
+const closeModalBtn = document.getElementById("closeModalBtn");
 
 function setStatus(type, text, asHtml) {
   statusCard.className = `card status ${type}`;
@@ -20,6 +23,17 @@ function setStatus(type, text, asHtml) {
 
 function hasBackendConfigured() {
   return APPS_SCRIPT_WEB_APP_URL.startsWith("https://");
+}
+
+function openStatusModal(messageHtml) {
+  modalMessage.innerHTML = messageHtml;
+  statusModal.classList.add("open");
+  statusModal.setAttribute("aria-hidden", "false");
+}
+
+function closeStatusModal() {
+  statusModal.classList.remove("open");
+  statusModal.setAttribute("aria-hidden", "true");
 }
 
 async function createLead(payload) {
@@ -113,17 +127,34 @@ form.addEventListener("submit", async (event) => {
       totalAmount: data.totalAmount
     };
 
+    const successHtml = `<span class="status-badge">SOLICITUD GUARDADA</span><br><strong>Bizum:</strong> ${order.totalAmount} EUR a <strong>${BIZUM_TARGET}</strong><br><strong>Referencia obligatoria:</strong> nombre y apellidos del pagador<br><strong>Entrega:</strong> QR por WhatsApp enviado manualmente por el equipo Euphoric tras validar el pago.`;
+
     setStatus(
       "ok",
-      `<span class="status-badge">SOLICITUD GUARDADA</span><br><strong>Bizum:</strong> ${order.totalAmount} EUR a <strong>${BIZUM_TARGET}</strong><br><strong>Referencia obligatoria:</strong> nombre y apellidos del pagador<br><strong>Entrega:</strong> QR por WhatsApp enviado manualmente por el equipo Euphoric tras validar el pago.`,
+      successHtml,
       true
     );
     window.alert("No te olvides de hacer el bizum para recibir tu codigo QR");
+    openStatusModal(successHtml);
     form.reset();
   } catch (error) {
     setStatus("err", error.message);
   } finally {
     submitBtn.disabled = false;
+  }
+});
+
+closeModalBtn.addEventListener("click", closeStatusModal);
+
+statusModal.addEventListener("click", (event) => {
+  if (event.target === statusModal) {
+    closeStatusModal();
+  }
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && statusModal.classList.contains("open")) {
+    closeStatusModal();
   }
 });
 

@@ -185,6 +185,47 @@ button:disabled {
   color: #0f5d2f;
 }
 
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(7, 21, 28, 0.48);
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-card {
+  width: min(760px, 95vw);
+  box-shadow: 0 28px 52px -26px #08171d;
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.modal-close {
+  margin: 0;
+  padding: 0.48rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+#modalMessage {
+  line-height: 1.55;
+}
+
+.status.ok #modalMessage strong {
+  color: #0f5d2f;
+}
+
 @keyframes float-in {
   from {
     opacity: 0;
